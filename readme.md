@@ -1,5 +1,5 @@
 # Gencert
-This is perhaps the worst way in the world to practise golang. Il s'agit d'un générateur de certificat.
+This is perhaps the worst way in the world to practise golang.  This is a certificate generator.
 
 ## Way to use it
 First you need to install go and gofpdf : 
