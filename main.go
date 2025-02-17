@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"gencert/cert"
-	"gencert/certpdf"
+	"gencert/certhtml"
 	"os"
 )
 
@@ -14,7 +14,8 @@ func main() {
 		os.Exit(1)
 	}
 	//var saver cert.Saver
-	saver, err := certpdf.New("output")
+	//saver, err := certpdf.New("output")
+	saver, err := certhtml.New("output")
 	if err != nil {
 		fmt.Println("Error1")
 		panic(err)
