@@ -20,8 +20,14 @@ type Cert struct {
 	LabelParticipation string
 	LabelDate          string
 }
+
+/*
+	type Saver interface {
+		Save(c Cert)
+	}
+*/
 type Saver interface {
-	Save(c Cert)
+	Save(c Cert) error
 }
 
 func New(course, name, date string) (*Cert, error) {

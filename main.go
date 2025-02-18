@@ -24,12 +24,10 @@ func main() {
 		fmt.Println("Unknown output type")
 
 	}
-
 	if err != nil {
-		fmt.Println("")
+		fmt.Println("Error")
 		os.Exit(1)
 	}
-
 	c, err := cert.New("le plus bo", "Simon Frey", "2025-02-12")
 	if err != nil {
 		fmt.Printf("Error0")
