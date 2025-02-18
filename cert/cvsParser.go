@@ -2,6 +2,7 @@ package cert
 
 import (
 	"encoding/csv"
+	"fmt"
 	"os"
 )
 
@@ -10,6 +11,7 @@ func ParseCSV(fileName string) ([]*Cert, error) {
 
 	f, err := os.Open(fileName)
 	if err != nil {
+		fmt.Print("ok 1")
 		return certs, err
 	}
 	defer f.Close()
@@ -17,12 +19,21 @@ func ParseCSV(fileName string) ([]*Cert, error) {
 	r := csv.NewReader(f)
 	records, err := r.ReadAll()
 	if err != nil {
+		fmt.Print("ok 2")
 		return certs, err
 	}
 	for _, rec := range records {
-		c, err := New(rec[0], rec[1], rec[2]) //
+		course := rec[0]
+		name := rec[1]
+		date := rec[2]
+		fmt.Println(course)
+		fmt.Println(name)
+		fmt.Println(date)
+
+		c, err := New(course, name, date)
 
 		if err != nil {
+			fmt.Print("ok 3")
 			return certs, err
 		}
 		certs = append(certs, c)

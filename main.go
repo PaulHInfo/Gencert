@@ -10,8 +10,14 @@ import (
 )
 
 func main() {
+	file := flag.String("file", "", "CSV file inpute")
 	outputType := flag.String("type", "pdf", "output type of the certificate")
 	flag.Parse()
+
+	if len(*file) <= 0 {
+		fmt.Println("Error - CSv")
+		os.Exit(1)
+	}
 
 	var saver cert.Saver
 	var err error
@@ -28,10 +34,17 @@ func main() {
 		fmt.Println("Error")
 		os.Exit(1)
 	}
-	c, err := cert.New("le plus bo", "Simon Frey", "2025-02-12")
+
+	certs, err := cert.ParseCSV(*file)
 	if err != nil {
-		fmt.Printf("Error0")
+		fmt.Printf("%v", err)
 		os.Exit(1)
 	}
-	saver.Save(*c)
+
+	for _, c := range certs {
+		err := saver.Save(*c)
+		if err != nil {
+			fmt.Println("Error1")
+		}
+	}
 }
